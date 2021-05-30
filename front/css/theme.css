@@ -1,0 +1,195 @@
+            body {
+				margin: 0;
+			}			body {
+				background-color: #ffffff;
+			}
+	        h1, h2, h3 {
+	        	color: #000000;
+				font-family: Arial, Helvetica, sans-serif;
+	        }
+	        p {
+	        	color: #000000;
+	        	font-family: "Times New Roman", Times, serif;
+	        }
+	        p a {
+	        	color: #000000;
+	        	text-decoration: none;
+	        }
+	        p a:hover {
+	        	text-decoration: underline;
+	        }
+			header {
+				border-bottom-width: 2px;
+				border-bottom-style: solid;
+				border-bottom-color: #bbbbbb;
+			}
+			header a:hover {
+				opacity: 70%;
+			}
+			.logo {
+				padding-top: 10px;
+				float: left;
+			}
+			.logo img{
+	        	width: 80px;
+	        	height: 80px;
+	        }
+			.navbar-nav {
+				background-color: #ffffff!important;
+				margin-left: 20px;
+				margin-top: 10px;
+			}
+			.navbar-nav a {
+				font-family: Arial, Helvetica, sans-serif;
+	        	font-size: 20px;
+	        	font-weight: bold;
+	        	text-decoration: none;
+	        	padding-right: 5px;
+				padding-left: 5px;
+			}
+			.navbar-nav a:hover {
+				text-decoration: underline;
+			}
+			.bg-light {
+			    background-color: #fff!important;
+			}
+	        .uvodni-tekst {
+	        	width: 100%;
+	        }
+	        .image-telefon {
+	            width: 250px;
+	        }
+	        .image-telefon-recenzija {
+	            width: 350px;
+	        }
+	        figcaption {
+	        	color: #000000;
+				font-family: Arial, Helvetica, sans-serif;
+	        	text-align: left;
+	        	font-size: 16px;
+	        }
+	        figure a {
+	        	text-decoration: none;
+	        }
+	        table {
+		        font-family: Arial, Helvetica, sans-serif;
+		        border-collapse: collapse;
+		        align-content: center;
+		    }
+        	td, th {
+		        border: 1px solid #d6d6d6;
+		        text-align: center;
+		        padding: 2px;
+	        }
+	        .phone-color{
+	        	margin-left: auto;
+    			margin-right: auto;
+	        }
+	        .phone-color td, th {
+	        	border: 0;
+	        	margin-left: 100px;
+	        }
+			.button {
+				padding: 5px 10px;
+				border: 1px solid #7d7d7d;
+				font-size: 12px;
+			}
+	        footer {
+	        	background-color: #d1d1d1;
+	        	padding: 20px;
+	        	color: #535353;
+	        	font-family: Arial, Helvetica, sans-serif;
+	        	font-size: 12px;
+				text-align: center;
+	        }
+	        footer a {
+	        	text-decoration: none;
+	        	color: #535353;
+	        }
+	        footer a:hover {
+	        	text-decoration: underline;
+	        	color: #000000;
+	        }
+	        .footer-nav {
+	        	padding-top: 20px;
+	        }
+	        .footer-nav a {
+	        	color: #535353;
+	        	font-size: 14px;
+	        }
+	        figure a {
+	        	text-decoration: none;
+	        }
+	       
+	        #opis-sajta{
+	        	padding: 20px;
+	        }
+	        .telefon-foto{
+	        	text-align: left;
+	        }
+	        .telefon-tekst {
+	        	padding: 20px;
+	        	margin-bottom: 10px;
+	        }
+	        #telefon-tekst-sivi
+	        {
+	        	background-color: #f2f2f2
+	        }
+	        #ocena{
+	        	font-size: 18px;
+	        	font-family: Arial, Helvetica, sans-serif;
+	            margin-left: 10px;
+	        }
+	        #teh-karakteristike {
+	        	margin-bottom: 20px;
+	        }
+	        .ocena-fotografija{
+	        	margin-bottom: -15px
+	        	width: 162px;
+	            height: 42px;
+	        }
+	        .tabela-karakteristika {
+	        	height: 600px;
+	        }
+	        .center{
+	        	text-align: center;
+	        }
+	        .recenzija-korisnika{
+	            margin-bottom: 20px;
+	        }
+	        .user-icon{
+	        	width: 34px;
+	            height: 34px;
+	        }
+	        .user-info{
+	        	margin-left: 10px;
+	        }
+	        .rating{
+	        	width: 120px;
+	            height: 31px;
+	        }
+	        .like{
+	        	margin-left: 5px;
+	        	margin-right: 10px
+	        }
+	        .dislike{
+	        	margin-left: 5px;
+	        }
+	        .border{
+	        	border: 1px solid #d1d1d1;
+	        	margin-bottom: 20px;
+	        	margin-top: 20px;
+	        }
+	        #moja-recenzija{
+	        	margin-bottom: 20px;
+	        }
+	        #prva-stranica-p{
+	        	color: #626262;
+	        	font-family: "Times New Roman", Times, serif;
+	        }
+	        /* Medium Devices, Desktops */
+			@media only screen and (min-width : 992px) {
+	        	.telefon-foto {
+	        		text-align: center;
+	        	}
+			}

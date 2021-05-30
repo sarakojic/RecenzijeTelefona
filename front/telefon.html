@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>Recenzija telefona</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="css/theme.css" rel="stylesheet" type="text/css"/>
+	<script src="js/jquery-3.5.1.slim.min.js" type="text/javascript"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+	
+	<script type="text/javascript" src="js/axios.min.js"></script>
+</head>
+
+<body>
+	<div class="container">
+
+		<!-- Header -->
+		<header>
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<a href="index.html" class="logo">
+					<img src="img/logo.png" alt="Go to main page" />
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div class="navbar-nav">
+						<a class="nav-item nav-link" href="index.html">Home</a>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<!-- /Header -->
+
+		<!-- Opis telefona -->
+		<section class="telefon-tekst">
+			<article>
+				<div class="row">
+					
+					<div class="col-xs-12 col-lg-6">
+						<div class="tekst-dve-kolone" id="tekst-desna-kolona">
+							<h1></h1>
+							<h2>Opis</h2>
+							<p id="opis"></p>
+
+							<h3>Prosečna ocena korisnika</h3>
+							<img id="zvezdice" class="ocena-fotografija" alt="ocena telefona" />
+							<span id="ocena"></span>
+						</div>
+					</div>
+
+					<div class="col-xs-12 col-lg-6">
+						<div class="telefon-dve-kolone" id="telefon-leva-kolona">
+							<figure class="telefon-foto">
+								<img id="slika" class="image-telefon-recenzija" />
+							</figure>
+							<table class="phone-color">
+								<tr>
+									<td><img src="img/color_gold.jpg" /></td>
+									<td><img src="img/color_midnight_green.jpg" /></td>
+									<td><img src="img/color_silver.jpg" /></td>
+									<td><img src="img/color_space_grey.jpg" /></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+
+				</div>	
+			</article>
+		</section>
+		<!-- /Opis telefona -->
+
+		<hr class="border" />
+
+		<!-- Tabela sa podacima -->
+		<section>
+			<article>
+				<div class="row">
+					<div class="col center" id="teh-karakteristike">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-lg-6">
+						<table class="table table-bordered table-striped tabela-karakteristika">
+							<tr>
+								<th>Ekran</th>
+								<td id="ekran"></td>
+							</tr>
+							<tr>
+								<th>Kapacitet</th>
+								<td id="kapacitet"></td>
+							</tr>
+							<tr>
+								<th>Otpornost na vodu i prašinu.</th>
+								<td id="otpornost"></td>
+							</tr>
+							<tr>
+								<th>Kamera &amp; Video</th>
+								<td id="kamera"></td>
+							</tr>
+							<tr>
+								<th>Prednja kamera</th>
+								<td id="prednja_kamera"></td>
+							</tr>
+							<tr>
+								<th>Napajanje i baterija</th>
+								<td id="baterija"></td>
+							</tr>
+						</table>
+					</div>
+
+					<div class="col-xs-12 col-lg-6">
+						<table class="table table-bordered table-striped tabela-karakteristika">
+							<tr>
+								<th>Sadržaj u pakovanju</th>
+								<td id="sadrzaj"></td>
+							</tr>
+							<tr>
+								<th>Visina</th>
+								<td id="visina"></td>
+							</tr>
+							<tr>
+								<th>Širina</th>
+								<td id="sirina"></td>
+							</tr>
+							<tr>
+								<th>Dubina</th>
+								<td id= "dubina"></td>
+							</tr>
+							<tr>
+								<th>Težina</th>
+								<td id="tezina"></td>
+							</tr>
+							<tr>
+								<th>Datum proizvodnje</th>
+								<td id="datum_proizvodnje"></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</article>
+		</section>
+		<!-- /Tabela sa podacima -->
+
+		<hr class="border" />
+
+		<!-- Video -->
+		<section>
+			<article>
+				<div class="row">
+					<div class="col">
+						<h2>Video recenzija</h2>
+						<h3 id="naziv_telefona"></h3>
+						<div class="embed-responsive embed-responsive-16by9">
+						  <iframe class="embed-responsive-item"  allowfullscreen></iframe>
+						</div>
+					</div>
+				</div>
+			</article>
+		</section>
+		<!-- /Video -->
+
+		<hr class="border" />
+
+		<!-- Recenzije -->
+		<section>
+			<h2>Recenzije korisnika</h2>
+			<div id= "recenzije_korisnika">
+			</div>
+		</section>
+		<!-- /Recenzije -->
+
+		<hr class="border" />
+
+		<!-- Ocenjivanje telefona -->
+		<section>
+			<article>
+				<div class="row">
+					<div class="col-xs-12 col-lg-8" id="moja-recenzija">
+						<h2>Ocenite telefon i pošaljite recenziju</h2>
+
+						<div class="recenzija-korisnika">
+
+							<div class="inputi">
+								<div name="recenzija-iphone-11-pro" action="" method="GET">
+
+									<div class="input-group mb-3">
+									  <div class="input-group-prepend">
+									    <label class="input-group-text" for="ocena">Ocenite telefon (1 do 5):</label>
+									  </div>
+									  <select class="custom-select" name="ocena" id="ocena">
+									    <option selected>Ocena:</option>
+									    <option value="1">1</option>
+									    <option value="2">2</option>
+									    <option value="3">3</option>
+									    <option value="4">4</option>
+										<option value="5">5</option>
+									  </select>
+									</div>
+
+									<br />
+									<br />
+
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Ime</span>
+										</div>
+										<input type="text" class="form-control" id="ime"name="ime" />
+									</div>
+
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Email</span>
+										</div>
+										<input type="text" class="form-control" id="email"name="email" />
+									</div>
+
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Naslov</span>
+										</div>
+										<input type="text" class="form-control"id="naslov" name="naslov" />
+									</div>
+
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Unesite komentar</span>
+										</div>
+										<textarea class="form-control" name="komentar" id="sadrzaj"></textarea>
+									</div>
+
+									<input class="btn btn-secondary" type="submit" id="postKomentar" value="Pošalji">
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</article>
+		</section>
+		<!-- /Ocenjivanje telefona -->
+
+		<!-- Footer -->
+		<footer>
+			<div class="row">
+				<div class="col">
+					<nav class="footer-nav">
+						<a href="index.html">Home</a> |
+						</a>
+					</nav>
+			    </div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<p id="prva-stranica-p">Author: Sara Kojic<br />
+					<a href="mailto:kojic.sara@jjzmaj.edu.rs">kojic.sara@jjzmaj.edu.rs</a></p>
+				</div>
+			</div>
+		</footer>
+		<!-- /Footer -->
+
+	</div>
+	<script type="text/javascript" src="js/telefon.js"></script>
+</body>
+
+</html>

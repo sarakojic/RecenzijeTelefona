@@ -1,0 +1,265 @@
+<!--!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>Sajt za recenziju mobilnih telefona</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="css/theme.css" rel="stylesheet" type="text/css"/>
+	<script src="js/jquery-3.5.1.slim.min.js" type="text/javascript"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/axios.min.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+	
+</head>
+
+<body>
+	<div class="container">
+
+		
+		<header>
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<a href="index.html" class="logo">
+					<img src="img/logo.png" alt="Go to main page" />
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div class="navbar-nav">
+						<a class="nav-item nav-link active" href="index.html">Home</a>
+						
+					</div>
+				</div>
+			</nav>
+		</header>
+	
+		<section class="uvodni-tekst">
+			<div id="opis-sajta">
+				<div class="row">
+					<div class="col">
+						<h1>Recenzije telefona</h1>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h2>Najnovije recenzije IPhone telefona</h2>
+						<p id="prva-stranica-p">Sajt sa recenzijama telefona, specifikacijama, detaljnim pregledima,
+							najnovijim vestima, dostupnim i nadolazećim telefonima.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<div id="telefoni_prva_stranica"></div>
+
+		
+		<footer>
+			<div class="row">
+				<div class="col">
+					<nav class="footer-nav">
+						<a href="index.html">Home</a> |
+					</nav>
+			    </div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<p id="prva-stranica-p">Author: Sara Kojic<br />
+					<a href="mailto:kojic.sara@jjzmaj.edu.rs">kojic.sara@jjzmaj.edu.rs</a></p>
+				</div>
+			</div>
+		</footer>
+		
+
+	</div>
+
+</body>
+</html-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>Sajt za recenziju mobilnih telefona</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="css/theme.css" rel="stylesheet" type="text/css"/>
+	<script src="js/jquery-3.5.1.slim.min.js" type="text/javascript"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/axios.min.js"></script>
+	
+	
+	
+</head>
+
+<body>
+	<div class="container">
+
+		<!-- Header -->
+		<header>
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<a href="index.html" class="logo">
+					<img src="img/logo.png" alt="Go to main page" />
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div class="navbar-nav">
+						<a class="nav-item nav-link active" href="index.html">Home</a>
+						
+					</div>
+				</div>
+			</nav>
+		</header>
+		<!-- /Header -->
+		<div id="telefoni_prva_stranica"></div>
+		<section>
+			<article>
+				<div class="row">
+					<div class="col-xs-12 col-lg-8" id="moja-recenzija">
+						<h2>Napravi telefon</h2>
+
+						<div class="recenzija-korisnika">
+
+							<div class="inputi">
+								<div name="recenzija-iphone-11-pro" action="" method="GET">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Naziv</span>
+										</div>
+										<input type="text" class="form-control" id="naziv"name="ime" />
+									</div>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Slika</span>
+										</div>
+										<input type="text" class="form-control" id="slika"name="slika" />
+									</div>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Ekran</span>
+										</div>
+										<input type="text" class="form-control" id="ekran"name="ekran" />
+									</div>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Kapacitet</span>
+										</div>
+										<input type="text" class="form-control" id="kapacitet"name="kapacitet" />
+									</div>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Otpornost_na_vodu_i_prasinu</span>
+										</div>
+										<input type="text" class="form-control" id="otpornost"name="otpornost" />
+									</div>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Kamera</span>
+										</div>
+										<input type="text" class="form-control" id="kamera"name="kamera" />
+									</div>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Prednja_kamera</span>
+										</div>
+										<input type="text" class="form-control" id="pkamera"name="pkamera" />
+									</div>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">napajanje</span>
+										</div>
+										<input type="text" class="form-control" id="napajanje"name="napajanje" />
+									</div>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">sadrzaj</span>
+										</div>
+										<input type="text" class="form-control" id="sadrzaj"name="sadrzaj" />
+									</div>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">visina</span>
+										</div>
+										<input type="text" class="form-control" id="visina"name="visina" />
+									</div>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">sirina</span>
+										</div>
+										<input type="text" class="form-control" name="sirina" id="sirina"/>
+									</div>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">dubina</span>
+										</div>
+										<input type="text" class="form-control" id="dubina"name="dubina" />
+									</div>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">tezina</span>
+										</div>
+										<input type="text" class="form-control" id="tezina"name="tezina" />
+									</div>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Datum</span>
+										</div>
+										<input type="text" class="form-control" id="datum"name="datum" />
+									</div>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Video</span>
+										</div>
+										<input type="text" class="form-control" id="video"name="video" />
+									</div>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Prva stranica opis</span>
+										</div>
+										<textarea class="form-control" name="popis" id="popis"></textarea>
+									</div>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Opis</span>
+										</div>
+										<textarea class="form-control" name="opis" id="opis"></textarea>
+									</div>
+									<button class="btn btn-secondary" type="button"name="postTelefon"id="postTelefon">Posalji</button>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</article>
+		</section>
+
+		<!-- Footer -->
+		<footer>
+			<div class="row">
+				<div class="col">
+					<nav class="footer-nav">
+						<a href="index.html">Home</a> |
+					</nav>
+			    </div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<p id="prva-stranica-p">Author: Sara Kojic<br />
+					<a href="mailto:kojic.sara@jjzmaj.edu.rs">kojic.sara@jjzmaj.edu.rs</a></p>
+				</div>
+			</div>
+		</footer>
+		<!-- /Footer -->
+
+	</div>
+	<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

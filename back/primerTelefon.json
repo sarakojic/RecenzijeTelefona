@@ -1,0 +1,49 @@
+{
+    "Naziv":"iPhone 11 Pro",
+    "PrvaStranica_Opis":"nesto",
+    "Opis":"nesto",
+    "Slika":"img/iphone_11_pro_gold.png",
+    "Ekran":"5.8-inch Super Retina HD display with XDR and True Tone",
+    "Kapacitet":"64GB, 256GB, 512GB",
+    "Otpornost_na_vodu_i_prasinu":"Dizajn od nerđajućeg čelika i stakla.Otporanna vodu i prašinu",
+    "Kamera":"Triple 12MP cameras with Portrait mode, Depth Control, Portrait Lighting, Smart HDR, and 4K video up to 60 fps",
+    "Prednja_kamera":"12MP TrueDepth prednja kamera sa portret opcijom, kontrolom dubine, osvetljenjem potreta",
+    "Napajanje_i_baterija":"Traje do 4 sata duže od iPhone XS; Puštanja videa: do 18 sati; Puštanje zvučnih dokumenata: do 65 sati; Uključen adapter za 18W; Kabl za brzo punjnje: Napuni do 50% za vreme od oko 30minuta sa adapterom od 18W ili više",
+    "Sadrzaj_u_pakovanju":"iPhone with iOS 13, EarPods with Lightning Connector, USB-C to Lightning Cable, 18WUSB-C Power Adapter, Documentation",
+    "Visina":"5.67 inches (144.0 mm)",
+    "Sirina":"2.81 inches (71.4 mm)",
+    "Dubina":"0.32 inch (8.1 mm)",
+    "Tezina":"6.63 ounces (188 grams)",
+    "Datum_proizvodnje":"20/9/2019",
+    "Video":"https://www.youtube.com/embed/iNk5Res9bB0?rel=0",
+
+    "Komentari":
+    [
+        {
+            "Ime":"Jelena Micevic",
+            "Ocena":"5",
+            "naslov":"Jedan od boljih telefona, ali definitivno još uvek nije najbolji.",
+            "sadrzaj":"Dobar je",
+            "likes":"9",
+            "dislikes":4
+        },
+        {
+            "Ime":"Petar Simic",
+            "Ocena":"3",
+            "naslov":"Ništa",
+            "komentar":"Telefon je puno reklamiran, a nije nista specijalno",
+            "likes":"7",
+            "dislikes":"3"
+        },
+        {
+            "Ime":"Milan Mandic",
+            "Ocena":"5",
+            "naslov":"Odličan!",
+            "komentar":"Apsolutno najbolji telefon koji sam imao.",
+            "likes":"6",
+            "dislikes":"2"
+        }
+
+    ]
+
+}
