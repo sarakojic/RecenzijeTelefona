@@ -112,9 +112,11 @@ router.put("/telefoni/:idTel/komentari/:idKom", async (req, res) => {
         const telefonID = req.params.idTel
         const komentarID = req.params.idKom
         jedanTelefon=await telefon.findById(telefonID)
-        jedanTelefon.Komentari.forEach(commentID => {
-          if (commentID==komentarID){
+        let komentar
+        jedanTelefon.Komentari.forEach(comment => {
+          if (comment._id==komentarID){
             found=true
+            komentar=comment
           }
         });
         if (found==true){
@@ -126,11 +128,8 @@ router.put("/telefoni/:idTel/komentari/:idKom", async (req, res) => {
             likes: 0,
             dislikes: 0,
         }
-          const noviKomentar = new komentar(noviKomentarBody)
-          const specificTelefon=telefon.findById(telefonID)
-          const specificKomentar= await specificTelefon.Komentari.findById(komentarID)
-          specificKomentar.Komentari.push(sacuvanKomentar._id)
-          await specificKomentar.save()
+          komentar.Komentari.push(noviKomentarBody)
+          await jedanTelefon.save()
         
         res.status(200).json({
             success: true
