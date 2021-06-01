@@ -31,8 +31,6 @@ var telefonSchema = new mongoose.Schema({
             Ime:String,
             Naslov:String,
             sadrzaj:String,
-            likes:Number,
-            dislikes:Number
         }]
     }],
     created: Date,

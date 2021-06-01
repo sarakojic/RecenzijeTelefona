@@ -100,10 +100,14 @@ function ocena(telefon){
         ocena+=kom.Ocena
         brojac++
       });
-      
-      ocena=ocena/brojac;
-      telefon.Ocena=ocena
-      ocena = Math.round(ocena*2)/2;
+      if (brojac==0){
+        telefon.Ocena=0
+      }
+      else{
+        ocena=ocena/brojac;
+        telefon.Ocena=ocena
+        ocena = Math.round(ocena*2)/2;
+      }
       var zvezdice;
       
       zvezdice = Zvezdice_za_ocenu(ocena);
@@ -150,11 +154,11 @@ async function dislikeComment(btn){
     console.log(err)
   }
 }
-function sortByPopularity() {
-  return function(a,b) {
-     if(a.likes+a.dislikes < b.likes+b.dislikes)
+function Criteria() {
+  return function(kom1,kom2) {
+     if(kom1.likes+kom1.dislikes < kom2.likes+kom2.dislikes)
         return 1
-     else if(a.likes+a.dislikes > b.likes+b.dislikes)
+     else if(kom1.likes+kom1.dislikes > kom2.likes+kom2.dislikes)
         return -1
      return 0
   }
@@ -163,9 +167,9 @@ function sortByPopularity() {
 function renderNav(telefoni){
   const footer = document.querySelector(".footer-nav")
     const header = document.querySelector(".navbar-nav")
-    let cards = ""
+    var nav = ""
     telefoni.forEach((telefon) => {
-        cards += createCard(telefon)
+        nav += createCard(telefon)
         footer.innerHTML+=`<a href="telefon.html?id=${telefon._id}">${telefon.Naziv}</a> | `
         header.innerHTML+=`<a class="nav-item nav-link" href="telefon.html?id=${telefon._id}">${telefon.Naziv}</a>`
     })
@@ -174,7 +178,7 @@ function renderNav(telefoni){
 function renderCards(komentari) {
     const  komentariHTML= document.querySelector("#recenzije_korisnika")
     let cards = ""
-    komentari.sort(sortByPopularity())
+    komentari.sort(Criteria())
     komentari.forEach((komentar) => {
         cards+= createCard(komentar)
         komentar.Komentari.forEach((komentar2) => {
@@ -275,14 +279,6 @@ function createComment(komentar) {
   return card
 }
 
-
-/*
-function getId(btn) {
-    const parent = btn.parentElement
-    const id = parent.getAttribute("phone-id")
-    return id
-}*/
-
 const postButton = document.querySelector("#postKomentar")
 postButton.addEventListener("click", getInput)
 
@@ -306,8 +302,6 @@ async function getInput() {
 }
 async function getInput2(btn) {
   try {
-    console.log("input 2")
-    
       const idKom=getId(btn)
       const noviKomentar= {
         ime: document.querySelector(`#ime-${idKom}`).value,
