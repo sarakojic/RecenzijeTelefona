@@ -1,4 +1,3 @@
-const { default: axios } = require("axios")
 
 const urlId = getUrlId()
 
@@ -16,11 +15,12 @@ loadPage()
 async function loadPage() {
     try {
         let telefonBody = await axios.get(`/api/telefoni/${urlId}`)
-        //const telefoniBody= await axios.get(`api/telefoni`)
-        //const telefoni=telefoniBody.data.telefoni
-        //renderNav(telefoni)
+        const telefoniBody= await axios.get(`api/telefoni`)
+        const telefoni=telefoniBody.data.telefoni
+        renderNav(telefoni)
         let telefon=telefonBody.data.telefon
-        $("h1").html(telefon.Naziv);
+        const h1=document.querySelector("h1")
+        h1.innerHTML=telefon.Naziv
         $("#opis").html(telefon.Opis);
         $("#slika").attr("src", telefon.Slika);
         $("#slika").attr("alt", telefon.Naziv);
@@ -41,6 +41,8 @@ async function loadPage() {
         $("#naziv_telefona").html(telefon.Naziv);
         $("iframe").attr("src", telefon.Video);
         ocena(telefon)
+        const ocenaHTML=document.querySelector("#ocena")
+        ocenaHTML.innerHTML='<strong>' + telefon.Ocena + ' od 5</strong>'
         renderCards(telefon.Komentari)
     } catch (err) {
         console.log(err)
@@ -94,8 +96,6 @@ function ocena(telefon){
       
       ocena=ocena/brojac;
       ocena = Math.round(ocena*2)/2;
-      const ocenaHTML=document.querySelector("#ocena")
-      ocenaHTML.innerHTML='<strong>' + ocena + ' od 5</strong>'
       var zvezdice;
       
       zvezdice = Zvezdice_za_ocenu(ocena);
@@ -250,8 +250,13 @@ async function getInput() {
             sadrzaj: document.querySelector("#sadrzaj").value,
             
       }
+      const ocena=  document.querySelector("#ocena")
+      novaOcena=ocena.options[ocena.selectedIndex].value
+
         console.log(noviKomentar)
-        await axios.put(`/api/telefoni/${urlID}/komentari`, noviKomentar)
+        console.log(novaOcena)
+        console.log(document.querySelector("#ocena").value)
+        await axios.put(`/api/telefoni/${urlId}/komentari`, noviKomentar)
         loadPage()
     } catch (err) {
         console.log(err)
@@ -266,7 +271,7 @@ async function getInput2() {
           
     }
       console.log(noviKomentar)
-      await axios.put(`/api/telefoni/:${urlID}/komentari/`, noviKomentar)
+      await axios.put(`/api/telefoni/:${urlId}/komentari/`, noviKomentar)
       loadPage()
   } catch (err) {
       console.log(err)
