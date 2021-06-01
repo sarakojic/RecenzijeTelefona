@@ -92,12 +92,10 @@ router.put("/telefoni/:id/komentari", async (req, res) => {
           sadrzaj: req.body.sadrzaj,
           Ocena:req.body.ocena,
           likes: 0,
-          dislikes: 0,
+          dislikes: 0
       }
-        const noviKomentar = new komentar(noviKomentarBody)
         const jedanTelefon = await telefon.findById(telefonID)
-        const sacuvanKomentar = await noviKomentar.save()
-        jedanTelefon.Komentari.push(sacuvanKomentar._id)
+        jedanTelefon.Komentari.push(noviKomentarBody)
         await jedanTelefon.save()
         res.status(200).json({
             success: true
@@ -132,7 +130,7 @@ router.put("/telefoni/:idTel/komentari/:idKom", async (req, res) => {
           const specificTelefon=telefon.findById(telefonID)
           const specificKomentar= await specificTelefon.Komentari.findById(komentarID)
           specificKomentar.Komentari.push(sacuvanKomentar._id)
-          await jedanKomentar.save()
+          await specificKomentar.save()
         
         res.status(200).json({
             success: true
@@ -146,23 +144,31 @@ router.put("/telefoni/:idTel/komentari/:idKom", async (req, res) => {
   })
   router.put("/telefoni/:idTel/komentari/:idKom/like", async (req, res) => {
     try {
-        const telefonID = req.params.idTel
-        const komentarID = req.params.idKom
+      const telefonID = req.params.idTel
+      const komentarID = req.params.idKom
         const jedanTelefon = await telefon.findById(telefonID)
-        const found=false
-        jedanTelefon.Komentari.forEach(commentID => {
-          if (commentID==komentarID){
+        let found=false
+        let komentar
+        jedanTelefon.Komentari.forEach(comment => {
+          if (comment._id==komentarID){
             found=true
+            komentar=comment
           }
         });
         if (found==true){
-          const specificTelefon= await telefon.findById(telefonID)
-          const specificKomentar=await specificTelefon.Komentari.findById(komentarID)
-          specificKomentar.likes++;
-        
+          komentar.likes++;
+          await jedanTelefon.save()
         res.status(200).json({
             success: true
-        })}}
+        })}
+        else{
+          res.status(404).json({
+            success: false,
+            message: "comment not found"
+        })
+        }
+        
+      }
       catch (err) {
         res.status(404).json({
             success: false,
@@ -172,23 +178,31 @@ router.put("/telefoni/:idTel/komentari/:idKom", async (req, res) => {
   })
   router.put("/telefoni/:idTel/komentari/:idKom/dislike", async (req, res) => {
     try {
-        const telefonID = req.params.idTel
-        const komentarID = req.params.idKom
+      const telefonID = req.params.idTel
+      const komentarID = req.params.idKom
         const jedanTelefon = await telefon.findById(telefonID)
-        const found=false
-        jedanTelefon.Komentari.forEach(commentID => {
-          if (commentID==komentarID){
+        let found=false
+        let komentar
+        jedanTelefon.Komentari.forEach(comment => {
+          if (comment._id==komentarID){
             found=true
+            komentar=comment
           }
         });
         if (found==true){
-          const specificTelefon=telefon.findById(telefonID)
-          const specificKomentar=await specificTelefon.Komentari.findById(komentarID)
-          specificKomentar.dislikes++;
-        
+          komentar.dislikes++;
+          await jedanTelefon.save()
         res.status(200).json({
             success: true
-        })}}
+        })}
+        else{
+          res.status(404).json({
+            success: false,
+            message: "comment not found"
+        })
+        }
+        
+      }
       catch (err) {
         res.status(404).json({
             success: false,
@@ -196,6 +210,7 @@ router.put("/telefoni/:idTel/komentari/:idKom", async (req, res) => {
         })
     }
   })
+    
 
   router.post("/telefoni", async (req, res) => {
     try {

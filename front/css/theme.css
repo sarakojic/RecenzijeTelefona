@@ -144,7 +144,7 @@
 	        	margin-bottom: 20px;
 	        }
 	        .ocena-fotografija{
-	        	margin-bottom: -15px
+	        	margin-bottom: -15px;
 	        	width: 162px;
 	            height: 42px;
 	        }
@@ -192,4 +192,8 @@
 	        	.telefon-foto {
 	        		text-align: center;
 	        	}
+			}
+			.vote-btn{
+				background-color: #fff;
+				border-width: 0px;
 			}

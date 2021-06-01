@@ -44,6 +44,7 @@ async function loadPage() {
         const ocenaHTML=document.querySelector("#ocena")
         ocenaHTML.innerHTML='<strong>' + telefon.Ocena + ' od 5</strong>'
         renderCards(telefon.Komentari)
+        addEventListeners()
     } catch (err) {
         console.log(err)
     }
@@ -85,7 +86,9 @@ function Zvezdice_za_ocenu(x){
     case 5:
       zvezda = 'img/star_5.png';
       break;
-  } }
+      
+   }
+  return zvezda}
 function ocena(telefon){
   var ocena=0;
       var brojac=0;
@@ -95,16 +98,13 @@ function ocena(telefon){
       });
       
       ocena=ocena/brojac;
+      telefon.Ocena=ocena
       ocena = Math.round(ocena*2)/2;
       var zvezdice;
       
       zvezdice = Zvezdice_za_ocenu(ocena);
       $("#zvezdice").attr("src", zvezdice);
         return zvezdice;
-      
-
-     
-
 }
 
 function addEventListeners() {
@@ -123,25 +123,26 @@ function addEventListeners() {
   )
 }
 async function likeComment(btn){
+  try{
   const komentarId=getId(btn)
-  let response=false
-  const responseBody = await axios.put(`/api/telefoni/${urlId}/komentari/${komentarId}/like`)
-  response = responseBody.data.reload
-  if (response) {
-    loadPage()
-}
-
+  await axios.put(`/api/telefoni/${urlId}/komentari/${komentarId}/like`)
+  loadPage()
+  }
+  catch(err){
+    console.log(err)
+  }
 }
 async function dislikeComment(btn){
+  try{
   const komentarId=getId(btn)
-  let response=false
-  const responseBody = await axios.put(`/api/telefoni/${urlId}/komentari/${komentarId}/dislike`)
-  response = responseBody.data.reload
-  if (response) {
-    loadPage()
+  await axios.put(`/api/telefoni/${urlId}/komentari/${komentarId}/dislike`)
+  loadPage()
+  }
+  catch(err){
+    console.log(err)
+  }
 }
 
-}
 function renderNav(telefoni){
   const footer = document.querySelector(".footer-nav")
     const header = document.querySelector(".navbar-nav")
@@ -158,10 +159,10 @@ function renderCards(komentari) {
     let cards = ""
     komentari.forEach((komentar) => {
         cards+= createCard(komentar)
-        komentari.Komentari.forEach((komentar2) => {
+        /*komentari.Komentari.forEach((komentar2) => {
           cards += createCard(komentar2)
         
-      })
+      })*/
 
     })
 
@@ -173,25 +174,25 @@ function createCard(komentar) {
     <article>
     <div class="row">
       <div class="col-xs-12 col-lg-8">
-        <div class="recenzija-korisnika">
+        <div class="recenzija-korisnika" komentar-id=${komentar._id}>
           <img src="img/user.png" class="user-icon" />
           <span class="user-info">${komentar.Ime}</span>
           <br />
           <img src="${Zvezdice_za_ocenu(komentar.Ocena)}" class="rating" />
-          <span class="user-info"><b>${komentar.naslov}</b></span>
+          <span class="user-info"><b>${komentar.Naslov}</b></span>
           <br />
           <br />
-          ${komentar.komentar}
+          ${komentar.sadrzaj}
           
-          <button id="likeKomentar"><img src="img/like.jpg" class="like user-icon" /></button>
+          <button id="likeKomentar" class="vote-btn"><img src="img/like.jpg" class="like user-icon" /></button>
           <span class="like">${komentar.likes}</span>
-          <button id="dislikeKomentar"><img src="img/dislike.jpg" class="dislike user-icon" /></button>
+          <button id="dislikeKomentar" class="vote-btn"><img src="img/dislike.jpg" class="dislike user-icon" /></button>
           <span class="dislike">${komentar.dislikes}</span>
           <br />
           <br />
           <div class="inputi">
             <h3>Pošaljite komentar</h3>
-            <div name="komentar" action="" method="GET">
+            <div name="komentar" action="" method="GET" komentar-id=${komentar._id}>
 
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -214,7 +215,7 @@ function createCard(komentar) {
                 <textarea class="form-control" id="sadrzaj2"></textarea>
               </div>
 
-              <button class="btn btn-secondary" id="postKomentar2" type="button" value="Pošalji">
+              <button class="btn btn-secondary" id="postKomentar2" type="button">Posalji</button>
 
             </div>
           </div>
@@ -239,44 +240,49 @@ function getId(btn) {
 
 const postButton = document.querySelector("#postKomentar")
 postButton.addEventListener("click", getInput)
-
+const postButton2 = document.querySelector("#postKomentar2")
+postButton2.addEventListener("click", getInput2(postButton2))
 
 async function getInput() {
     try {
+      let ocena=document.querySelector("#unetaOcena")
+      let unetaOcena=ocena.options[ocena.selectedIndex].value
       const noviKomentar= {
-            ime: document.querySelector("#ime").value,
-            naslov: document.querySelector("#naslov").value,
-            ocena: document.querySelector("#ocena").value,
-            sadrzaj: document.querySelector("#sadrzaj").value,
-            
-      }
-      const ocena=  document.querySelector("#ocena")
-      novaOcena=ocena.options[ocena.selectedIndex].value
-
+        ime: document.querySelector("#ime").value,
+        naslov: document.querySelector("#naslov").value,
+        ocena: unetaOcena,
+        sadrzaj: document.querySelector("#sadrzajKomentara").value,
+        
+  }
         console.log(noviKomentar)
-        console.log(novaOcena)
-        console.log(document.querySelector("#ocena").value)
         await axios.put(`/api/telefoni/${urlId}/komentari`, noviKomentar)
         loadPage()
     } catch (err) {
         console.log(err)
     }
 }
-async function getInput2() {
+async function getInput2(btn) {
   try {
+    console.log("input 2")
     const noviKomentar= {
           ime: document.querySelector("#ime2").value,
           naslov: document.querySelector("#naslov2").value,
           sadrzaj: document.querySelector("#sadrzaj2").value,
           
     }
+
       console.log(noviKomentar)
-      await axios.put(`/api/telefoni/:${urlId}/komentari/`, noviKomentar)
+      const idKom=getId(btn)
+      await axios.put(`/api/telefoni/:${urlId}/komentari/${idKom}`, noviKomentar)
       loadPage()
   } catch (err) {
       console.log(err)
   }
 }
 
-
+function getId(btn) {
+  const parent = btn.parentElement
+  const id = parent.getAttribute("komentar-id")
+  return id
+}
 
